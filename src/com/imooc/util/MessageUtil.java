@@ -94,9 +94,9 @@ public class MessageUtil {
 	/*
 	 * 主菜单
 	 */
-	public static String menuText() {
+	public static String menuText(String con) {
 		StringBuilder str = new StringBuilder();
-		str.append("谢谢关注！请选输入编号操作" + "\r\n");
+		str.append(con + "\r\n");
 		str.append("1,(⊙﹏⊙）(⊙﹏⊙)（⊙⊙）" + "\r\n");
 		str.append("2,懒得写" + "\r\n");
 		str.append("3,懒得写*2" + "\r\n");

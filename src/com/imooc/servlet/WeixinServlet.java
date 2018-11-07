@@ -46,21 +46,26 @@ public class WeixinServlet extends HttpServlet {
             String fromUserName = map.get("FromUserName");//发送方
             String toUserName = map.get("ToUserName");//开发者
             //数据
-            String content = map.get("Content");//类容
+            String content = map.get("Content");//内容
             String msgType = map.get("MsgType");//类型
 
 
             String message = null;
 
             if(MessageUtil.MESSAGE_TEXT.equals(msgType)) {
-                if("？".equals(content))
-                {
-                    message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText());
-                }else if("1".equals(content)){
-                    message = MessageUtil.initText(toUserName, fromUserName,"还真输。啥也没有");
-                }else {
-                    String con = "你好：" + fromUserName + "\r\n" + "你发送了："+content;
-                    message = MessageUtil.initText(toUserName, fromUserName,con);
+                switch (content){
+                    case "?":
+                        message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("输入编号编号进行操作！"));
+                        break;
+                    case "1":
+                        message = MessageUtil.initText(toUserName, fromUserName,"还真输。啥也没有");
+                        break;
+                    case "2":
+                        break;
+                    default:
+                        String con = "你好：" + fromUserName + "\r\n" + "你发送了："+content;
+                        message = MessageUtil.initText(toUserName, fromUserName,con);
+                        break;
                 }
             }else if(MessageUtil.MESSAGE_EVENT.equals(msgType)) {
                 //区分事件推送
@@ -68,7 +73,7 @@ public class WeixinServlet extends HttpServlet {
                 //关注
 
                 if(MessageUtil.MESSAGE_SUBSCRIBE.equals(event)) {
-                    message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText());
+                    message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("感谢您的关注，请输入以下编号进行操作"));
                 }
             }else {
                 if(MessageUtil.MESSAGE_IMAGE.equals(msgType)){//图片
