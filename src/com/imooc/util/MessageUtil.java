@@ -120,6 +120,9 @@ public class MessageUtil {
 		return MessageUtil.textMessageToXml(text);//转化为xml
 	}
 
+	/*
+	初始化图文《---暂时用默认
+	 */
 	public static String textImgeMessage(String toUserName,String fromUserName,String content){
 		TextImgeMessage textImgeMessage = new TextImgeMessage();
 		List<TextImgeNews> list = new LinkedList<>();
