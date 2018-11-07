@@ -128,7 +128,11 @@ public class MessageUtil {
 		List<TextImgeNews> list = new LinkedList<>();
 
 		TextImgeNews textImgeNews = new TextImgeNews();
+		TextImgeNews textImgeNews1 = new TextImgeNews();
+		TextImgeNews textImgeNews2 = new TextImgeNews();
 		list.add(textImgeNews);
+		list.add(textImgeNews1);
+		list.add(textImgeNews2);
 
 		textImgeMessage.setToUserName(fromUserName);
 		textImgeMessage.setFromUserName(toUserName);

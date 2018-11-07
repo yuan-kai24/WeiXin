@@ -55,12 +55,14 @@ public class WeixinServlet extends HttpServlet {
             if(MessageUtil.MESSAGE_TEXT.equals(msgType)) {
                 switch (content){
                     case "?":
+                    case "？":
                         message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("输入编号编号进行操作！"));
                         break;
                     case "1":
                         message = MessageUtil.initText(toUserName, fromUserName,"还真输。啥也没有");
                         break;
                     case "2":
+                        message = MessageUtil.textImgeMessage(toUserName,fromUserName,"哈哈哈哈哈哈");
                         break;
                     default:
                         String con = "你好：" + fromUserName + "\r\n" + "你发送了："+content;
@@ -76,12 +78,7 @@ public class WeixinServlet extends HttpServlet {
                     message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("感谢您的关注，请输入以下编号进行操作"));
                 }
             }else {
-                if(MessageUtil.MESSAGE_IMAGE.equals(msgType)){//图片
-                    System.out.println("================================================================");
-                    message = MessageUtil.textImgeMessage(toUserName,fromUserName,"哈哈哈哈哈哈");
-                }else{
                     message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm："+msgType);
-                }
 
             }
             out.print(message);
