@@ -2,6 +2,9 @@ package com.imooc.po;
 
 import java.util.Date;
 
+/*
+封装信息推送的共性
+ */
 public class BaseMessage {
     public String ToUserName;
     public String FromUserName;
