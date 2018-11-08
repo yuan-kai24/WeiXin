@@ -67,6 +67,7 @@ public class WeixinServlet extends HttpServlet {
                     default:
                         String con = "你好：" + fromUserName + "\r\n" + "你发送了："+content;
                         message = MessageUtil.initText(toUserName, fromUserName,con);
+
                         break;
                 }
             }else if(MessageUtil.MESSAGE_EVENT.equals(msgType)) {
@@ -76,9 +77,11 @@ public class WeixinServlet extends HttpServlet {
 
                 if(MessageUtil.MESSAGE_SUBSCRIBE.equals(event)) {
                     message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("感谢您的关注，请输入以下编号进行操作"));
+
                 }
             }else {
                     message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm："+msgType);
+//                message = MessageUtil.textImgeMessage(toUserName,fromUserName,"嗡嗡嗡嗡嗡嗡");
 
             }
             out.print(message);
