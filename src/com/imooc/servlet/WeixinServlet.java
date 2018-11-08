@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.imooc.po.DownloadVoice;
 import com.imooc.util.CheckUtil;
 import com.imooc.util.MessageUtil;
 
@@ -28,7 +29,7 @@ public class WeixinServlet extends HttpServlet {
         String timestamp = req.getParameter("timestamp");
         String nonce = req.getParameter("nonce");
         String echostr = req.getParameter("echostr");
-        if(CheckUtil.checkSignature(signature, timestamp, nonce)) {
+        if (CheckUtil.checkSignature(signature, timestamp, nonce)) {
             out.print(echostr);
         }
     }
@@ -49,46 +50,52 @@ public class WeixinServlet extends HttpServlet {
             String content = map.get("Content");//内容
             String msgType = map.get("MsgType");//类型
 
+            // ----------------------------------------------------------------
+            DownloadVoice.getVoice(req,map);
+            // ----------------------------------------------------------------
 
             String message = null;
 
-            if(MessageUtil.MESSAGE_TEXT.equals(msgType)) {
-                switch (content){
+            if (MessageUtil.MESSAGE_TEXT.equals(msgType)) {
+                switch (content) {
                     case "?":
                     case "？":
                         message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("输入编号编号进行操作！"));
                         break;
                     case "1":
-                        message = MessageUtil.initText(toUserName, fromUserName,"还真输。啥也没有");
+                        message = MessageUtil.initText(toUserName, fromUserName, "还真输。啥也没有");
                         break;
                     case "2":
-                        message = MessageUtil.textImgeMessage(toUserName,fromUserName,"哈哈哈哈哈哈");
+                        message = MessageUtil.textImgeMessage(toUserName, fromUserName, "哈哈哈哈哈哈");
                         break;
                     default:
-                        String con = "你好：" + fromUserName + "\r\n" + "你发送了："+content;
-                        message = MessageUtil.initText(toUserName, fromUserName,con);
+                        String con = "你好：" + fromUserName + "\r\n" + "你发送了：" + content;
+                        message = MessageUtil.initText(toUserName, fromUserName, con);
 
                         break;
                 }
-            }else if(MessageUtil.MESSAGE_EVENT.equals(msgType)) {
+            } else if (MessageUtil.MESSAGE_EVENT.equals(msgType)) {
                 //区分事件推送
                 String event = map.get("Event");
                 //关注
 
-                if(MessageUtil.MESSAGE_SUBSCRIBE.equals(event)) {
+                if (MessageUtil.MESSAGE_SUBSCRIBE.equals(event)) {
                     message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("感谢您的关注，请输入以下编号进行操作"));
 
                 }
-            }else {
-                    message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm："+msgType);
+            } else if (MessageUtil.MESSAGE_VOICE.equals(msgType)) {
+                System.out.println("================================================================");
+                message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm：" + DownloadVoice.asr());
+            } else {
+                message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm：" + msgType);
 //                message = MessageUtil.textImgeMessage(toUserName,fromUserName,"嗡嗡嗡嗡嗡嗡");
 
             }
             out.print(message);
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if(out != null) {
+        } finally {
+            if (out != null) {
                 out.close();
             }
         }

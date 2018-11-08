@@ -83,7 +83,6 @@ public class MessageUtil {
 		XStream xstream = new XStream(new DomDriver());
 		xstream.alias("xml", obj.getClass());
 		xstream.alias("item", new TextImgeNews().getClass());
-		System.out.println(xstream.toXML(obj));
 		return xstream.toXML(obj);
 	}
 
@@ -141,8 +140,6 @@ public class MessageUtil {
 		textImgeMessage.setMsgType(MessageUtil.MESSAGE_NEWS);
 		textImgeMessage.setArticles(list);
 		textImgeMessage.setArticleCount(list.size());
-
-		System.out.println(list.size());
 
 
 		return MessageUtil.textMessageToXml(textImgeMessage);
