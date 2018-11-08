@@ -18,6 +18,10 @@ public class WeiXinUtil {
     public static final String appid = "wx72473653441c25d6";
     public static final String appsecret = "d8a28b197283b088efb34da4a91daa39";
 
+    public static final String access_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+/*
+get
+ */
     public static JSONObject doGetStr(String url){
         DefaultHttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet(url);
@@ -34,7 +38,9 @@ public class WeiXinUtil {
         }
         return jsonObject;
     }
-
+/*
+post
+ */
     public static JSONObject doPostStr(String url,String outStr){
         DefaultHttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url);
@@ -48,5 +54,20 @@ public class WeiXinUtil {
             e.printStackTrace();
         }
         return jsonObject;
+    }
+
+    /*
+    获取access_token
+     */
+    public static AccessToken getAccessToken(){
+        AccessToken token = new AccessToken();
+        String url = access_token.replace("APPID",appid).replace("APPSECRET",appsecret);
+        JSONObject jsonObject = doGetStr(url);
+        if(jsonObject != null){
+            token.setToken(jsonObject.getString("access_token"));
+            token.setExpiresIn(jsonObject.getString("expires_in"));
+        }
+
+        return token;
     }
 }
