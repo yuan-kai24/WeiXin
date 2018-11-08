@@ -51,7 +51,7 @@ public class WeixinServlet extends HttpServlet {
             String msgType = map.get("MsgType");//类型
 
             // ----------------------------------------------------------------
-            DownloadVoice.getVoice(req,map);
+            DownloadVoice.getVoice(req,map);//解析微信语音
             // ----------------------------------------------------------------
 
             String message = null;
@@ -68,6 +68,9 @@ public class WeixinServlet extends HttpServlet {
                     case "2":
                         message = MessageUtil.textImgeMessage(toUserName, fromUserName, "哈哈哈哈哈哈");
                         break;
+                    case "3":
+                        message = MessageUtil.initText(toUserName, fromUserName, "语音识别为：" + DownloadVoice.asr());
+                        break;
                     default:
                         String con = "你好：" + fromUserName + "\r\n" + "你发送了：" + content;
                         message = MessageUtil.initText(toUserName, fromUserName, con);
@@ -83,10 +86,7 @@ public class WeixinServlet extends HttpServlet {
                     message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("感谢您的关注，请输入以下编号进行操作"));
 
                 }
-            } else if (MessageUtil.MESSAGE_VOICE.equals(msgType)) {
-                System.out.println("================================================================");
-                message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm：" + DownloadVoice.asr());
-            } else {
+            }  else {
                 message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm：" + msgType);
 //                message = MessageUtil.textImgeMessage(toUserName,fromUserName,"嗡嗡嗡嗡嗡嗡");
 

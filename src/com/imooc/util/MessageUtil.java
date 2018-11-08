@@ -95,7 +95,7 @@ public class MessageUtil {
 		str.append(con + "\r\n");
 		str.append("1,(⊙﹏⊙）(⊙﹏⊙)（⊙⊙）" + "\r\n");
 		str.append("2,图文消息" + "\r\n");
-		str.append("3,懒得写*2" + "\r\n");
+		str.append("3,语音识别" + "\r\n");
 		str.append("4,懒得写*3" + "\r\n");
 		str.append("5,懒得写*4" + "\r\n");
 		str.append("*穿越有理，逃跑无罪*"+ "\r\n");

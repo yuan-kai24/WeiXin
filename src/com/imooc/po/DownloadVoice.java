@@ -16,7 +16,9 @@ public class DownloadVoice {
     public static final String SECRET_KEY = "9eaV3RvGkFC3PwActuqLefyCvv0F5jSf";
     public static AipSpeech client = new AipSpeech(APP_ID, API_KEY, SECRET_KEY);
         // 调用接口
-
+        public static void main(String[] args) {
+            DownloadVoice.asr();
+        }
 
     public static void getVoice(HttpServletRequest req,Map<String, String> map){
         System.out.println("================================================================");
@@ -33,14 +35,14 @@ public class DownloadVoice {
     public static String asr()
     {
         // 对本地语音文件进行识别
-        String path = "F:\\IDEA_Java\\WeiXinX\\web\\resource\\10792 (1).wav";
+        String path = "F:\\IDEA_Java\\WeiXinX\\web\\resource\\5.amr";
         HashMap<String,Object> option = new HashMap<>();
         option.put("cuid","jsdahfjkasdhfkjafnjlad");
-        option.put("dev_pid",1936);
-        JSONObject asrRes = client.asr(path, "wav", 16000, null);
+        option.put("dev_pid",1537);
+        JSONObject asrRes = client.asr(path, "amr", 8000, option);
         JSONArray result = asrRes.getJSONArray("result");
-        System.out.println(result.get(0));
-//        System.out.println(asrRes.get("result"));
+        System.out.println(asrRes);
+        System.out.println(result.get(0).toString());
         // 对语音二进制数据进行识别
 //        byte[] data = Util.readFileByBytes(path);     //readFileByBytes仅为获取二进制数据示例
 //        JSONObject asrRes2 = client.asr(data, "pcm", 16000, null);
