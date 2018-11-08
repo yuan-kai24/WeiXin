@@ -83,12 +83,9 @@ public class MessageUtil {
 		XStream xstream = new XStream(new DomDriver());
 		xstream.alias("xml", obj.getClass());
 		xstream.alias("item", new TextImgeNews().getClass());
+		System.out.println(xstream.toXML(obj));
 		return xstream.toXML(obj);
 	}
-
-	/*
-	适用于图文消息等
-	 */
 
 
 	/*
@@ -98,7 +95,7 @@ public class MessageUtil {
 		StringBuilder str = new StringBuilder();
 		str.append(con + "\r\n");
 		str.append("1,(⊙﹏⊙）(⊙﹏⊙)（⊙⊙）" + "\r\n");
-		str.append("2,懒得写" + "\r\n");
+		str.append("2,图文消息" + "\r\n");
 		str.append("3,懒得写*2" + "\r\n");
 		str.append("4,懒得写*3" + "\r\n");
 		str.append("5,懒得写*4" + "\r\n");
@@ -130,6 +127,11 @@ public class MessageUtil {
 		TextImgeNews textImgeNews = new TextImgeNews();
 		TextImgeNews textImgeNews1 = new TextImgeNews();
 		TextImgeNews textImgeNews2 = new TextImgeNews();
+
+		textImgeNews2.setDescription(content);
+		textImgeNews1.setDescription("测试描述");
+		textImgeNews2.setPicUrl(null);
+
 		list.add(textImgeNews);
 		list.add(textImgeNews1);
 		list.add(textImgeNews2);
@@ -139,6 +141,8 @@ public class MessageUtil {
 		textImgeMessage.setMsgType(MessageUtil.MESSAGE_NEWS);
 		textImgeMessage.setArticles(list);
 		textImgeMessage.setArticleCount(list.size());
+
+		System.out.println(list.size());
 
 
 		return MessageUtil.textMessageToXml(textImgeMessage);

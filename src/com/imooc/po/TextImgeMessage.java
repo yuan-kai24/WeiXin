@@ -3,7 +3,6 @@ package com.imooc.po;
 import java.util.List;
 
 public class TextImgeMessage extends BaseMessage{
-
     private int ArticleCount ;
     private List<TextImgeNews> Articles;
 
