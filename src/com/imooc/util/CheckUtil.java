@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 //工具类
 public class CheckUtil {
-	private static final String token = "yuankai";// 自定义Token
+	public static final String token = "yuankai";// 自定义Token
 
 	public static boolean checkSignature(String signature, String timestamp, String nonce) {
 		String[] arr = new String[] { token, timestamp, nonce };
