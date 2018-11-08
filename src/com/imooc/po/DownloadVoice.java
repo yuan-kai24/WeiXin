@@ -2,6 +2,7 @@ package com.imooc.po;
 
 import com.baidu.aip.speech.AipSpeech;
 import com.imooc.util.CheckUtil;
+import com.imooc.util.WeiXinUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -25,18 +26,14 @@ public class DownloadVoice {
             DownloadVoice.asr();
         }
 
-    public static void getVoice(HttpServletRequest req,Map<String, String> map){
+    public static byte [] getVoice(HttpServletRequest req,Map<String, String> map){
         System.out.println("================================================================");
         String format = map.get("Format");
         String mediaId = map.get("MediaId");
         String stUrl = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+CheckUtil.token+"&media_id="+mediaId;
-        System.out.println(SendGET(mediaId));
-        try {
-//            HttpClient aNew = new HttpClient();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        byte[] bytes = SendGET(mediaId).getBytes();
         System.out.println("================================================================");
+        return bytes;
 
     }
     public static String SendGET(String mediaId){
@@ -46,8 +43,9 @@ public class DownloadVoice {
         try {
             //创建url
 //            URL realurl=new URL(url+"?"+param);
-            URL realurl=new URL("https://api.weixin.qq.com/cgi-bin/media/get?access_token="+CheckUtil.token+"&media_id="+mediaId);
-            System.out.println("地址:"+realurl.getAuthority());
+            String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+ WeiXinUtil.getAccessToken().getToken() +"&media_id="+mediaId;
+            URL realurl=new URL(url);
+            System.out.println("地址:"+url);
             //打开连接
             URLConnection connection=  realurl.openConnection();
             // 设置通用的请求属性
@@ -60,9 +58,12 @@ public class DownloadVoice {
             // 获取所有响应头字段
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段，获取到cookies等
-            for (String key : map.keySet()) {
-                System.out.println(key + "--->" + map.get(key));
-            }
+            System.out.println("================================================================");
+//            for (String key : map.keySet()) {
+//                System.out.println(key + "--->" + map.get(key));
+//            }
+            System.out.println(map.get(""));
+            System.out.println("================================================================");
             // 定义 BufferedReader输入流来读取URL的响应
             read = new BufferedReader(new InputStreamReader(
                     connection.getInputStream(),"UTF-8"));
@@ -81,7 +82,6 @@ public class DownloadVoice {
                 }
             }
         }
-
         return result;
     }
 
@@ -102,6 +102,15 @@ public class DownloadVoice {
 //        System.out.println(asrRes2);
 
         return result.get(0).toString();
+
+    }
+
+    public static String byteasr(byte [] bytes){
+            String lan = "语音占位";
+
+        JSONObject asrRes2 = client.asr(bytes, "mav", 8000, null);
+        System.out.println(asrRes2);
+            return lan;
 
     }
 }

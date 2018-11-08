@@ -49,9 +49,10 @@ public class WeixinServlet extends HttpServlet {
             //数据
             String content = map.get("Content");//内容
             String msgType = map.get("MsgType");//类型
-
             // ----------------------------------------------------------------
-            DownloadVoice.getVoice(req,map);//解析微信语音
+            for (String s : map.keySet()) {
+                System.out.println(s + "===" + map.get(s));
+            }
             // ----------------------------------------------------------------
 
             String message = null;
@@ -88,7 +89,6 @@ public class WeixinServlet extends HttpServlet {
                 }
             }  else {
                 message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm：" + msgType);
-//                message = MessageUtil.textImgeMessage(toUserName,fromUserName,"嗡嗡嗡嗡嗡嗡");
 
             }
             out.print(message);
