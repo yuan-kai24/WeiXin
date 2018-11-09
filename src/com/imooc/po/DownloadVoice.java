@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
@@ -76,7 +75,6 @@ public class DownloadVoice {
     }
 
     public static String asr(byte[] bytes) {
-        String lan = "不识别！";
         HashMap<String, Object> option = new HashMap<>();
         option.put("cuid", "kaikaizhizuo");
         option.put("dev_pid", 1536);

@@ -21,6 +21,7 @@ public class WeiXinUtil {
     public static final String access_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
     private static final AccessToken token = new AccessToken();
     private static long datecuo = 0L;//微信过期access_token过期时间
+    private static long mysj = 7000;
 /*
 get
  */
@@ -65,13 +66,14 @@ post
         Long dqsj = System.currentTimeMillis()/1000;
         datecuo = (datecuo == 0) ? System.currentTimeMillis()/1000 : datecuo;//判断有没有保存
 
-        if((dqsj - datecuo) == 0 && (dqsj - datecuo) >= 7000){
+        if((dqsj - datecuo) == 0 || (dqsj - datecuo) >= mysj){
             datecuo = dqsj;
             String url = access_token.replace("APPID",appid).replace("APPSECRET",appsecret);
             JSONObject jsonObject = doGetStr(url);
             if(jsonObject != null){
                 token.setToken(jsonObject.getString("access_token"));
                 token.setExpiresIn(jsonObject.getString("expires_in"));
+                mysj = Long.valueOf(token.getExpiresIn())-200;
             }
         }
 
