@@ -19,6 +19,8 @@ public class WeiXinUtil {
     public static final String appsecret = "d8a28b197283b088efb34da4a91daa39";
 
     public static final String access_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+
+    public static long datecuo = 0L;
 /*
 get
  */
@@ -60,15 +62,14 @@ post
     获取access_token
      */
     public static AccessToken getAccessToken(){
+        long l = System.currentTimeMillis();
+
         AccessToken token = new AccessToken();
         String url = access_token.replace("APPID",appid).replace("APPSECRET",appsecret);
         JSONObject jsonObject = doGetStr(url);
         if(jsonObject != null){
             token.setToken(jsonObject.getString("access_token"));
             token.setExpiresIn(jsonObject.getString("expires_in"));
-            System.out.println("================================================================");
-            System.out.println(token.getExpiresIn());
-            System.out.println("================================================================");
         }
 
         return token;
