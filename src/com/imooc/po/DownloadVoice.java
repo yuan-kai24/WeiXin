@@ -26,13 +26,10 @@ public class DownloadVoice {
             DownloadVoice.asr();
         }
 
-    public static byte [] getVoice(HttpServletRequest req,Map<String, String> map){
+    public static byte [] getVoice(Map<String, String> map){
         System.out.println("================================================================");
-        String format = map.get("Format");
         String mediaId = map.get("MediaId");
-        String stUrl = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+CheckUtil.token+"&media_id="+mediaId;
         byte[] bytes = SendGET(mediaId).getBytes();
-        System.out.println("================================================================");
         return bytes;
 
     }
@@ -41,9 +38,7 @@ public class DownloadVoice {
         BufferedReader read=null;//读取访问结果
 
         try {
-            //创建url
-//            URL realurl=new URL(url+"?"+param);
-            String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+ WeiXinUtil.getAccessToken().getToken() +"&media_id="+mediaId;
+            String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+ WeiXinUtil.getAccessToken().getToken() +"&media_id=MEDIA_ID"+mediaId;
             URL realurl=new URL(url);
             System.out.println("地址:"+url);
             //打开连接
@@ -59,10 +54,9 @@ public class DownloadVoice {
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段，获取到cookies等
             System.out.println("================================================================");
-//            for (String key : map.keySet()) {
-//                System.out.println(key + "--->" + map.get(key));
-//            }
-            System.out.println(map.get(""));
+            for (String key : map.keySet()) {
+                System.out.println(key + "的值是：" + map.get(key));
+            }
             System.out.println("================================================================");
             // 定义 BufferedReader输入流来读取URL的响应
             read = new BufferedReader(new InputStreamReader(
@@ -96,19 +90,15 @@ public class DownloadVoice {
         option.put("dev_pid",1537);
         JSONObject asrRes = client.asr(path, "amr", 8000, option);
         JSONArray result = asrRes.getJSONArray("result");
-        // 对语音二进制数据进行识别
-//        byte[] data = Util.readFileByBytes(path);     //readFileByBytes仅为获取二进制数据示例
-//        JSONObject asrRes2 = client.asr(data, "pcm", 16000, null);
-//        System.out.println(asrRes2);
 
         return result.get(0).toString();
 
     }
 
-    public static String byteasr(byte [] bytes){
+    public static String asr(byte [] bytes){
             String lan = "语音占位";
 
-        JSONObject asrRes2 = client.asr(bytes, "mav", 8000, null);
+        JSONObject asrRes2 = client.asr(bytes, "amr", 8000, null);
         System.out.println(asrRes2);
             return lan;
 

@@ -50,9 +50,8 @@ public class WeixinServlet extends HttpServlet {
             String content = map.get("Content");//内容
             String msgType = map.get("MsgType");//类型
             // ----------------------------------------------------------------
-            for (String s : map.keySet()) {
-                System.out.println(s + "===" + map.get(s));
-            }
+//            byte[] voice = DownloadVoice.getVoice(map);
+//            String asr = DownloadVoice.asr(voice);
             // ----------------------------------------------------------------
 
             String message = null;
@@ -87,8 +86,10 @@ public class WeixinServlet extends HttpServlet {
                     message = MessageUtil.initText(toUserName, fromUserName, MessageUtil.menuText("感谢您的关注，请输入以下编号进行操作"));
 
                 }
-            }  else {
-                message = MessageUtil.initText(toUserName, fromUserName, "emmmmmmmm：" + msgType);
+            }  else if(MessageUtil.MESSAGE_VOICE.equals(msgType)){
+                message = MessageUtil.initText(toUserName, fromUserName, "语音消息：" + map.get("Recognition"));
+            }else{
+                message = MessageUtil.initText(toUserName, fromUserName, "发送类型：" + msgType);
 
             }
             out.print(message);
