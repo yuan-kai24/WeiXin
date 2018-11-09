@@ -1,15 +1,11 @@
 package com.imooc.po;
 
 import com.baidu.aip.speech.AipSpeech;
-import com.imooc.util.CheckUtil;
 import com.imooc.util.WeiXinUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -29,16 +25,19 @@ public class DownloadVoice {
     public static byte [] getVoice(Map<String, String> map){
         System.out.println("================================================================");
         String mediaId = map.get("MediaId");
-        byte[] bytes = SendGET(mediaId).getBytes();
+        byte[] bytes = new byte[0];
+        try {
+            bytes = SendGET(mediaId).getBytes("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return bytes;
 
     }
     public static String SendGET(String mediaId){
         String result="";//访问返回结果
-        BufferedReader read=null;//读取访问结果
-
         try {
-            String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+ WeiXinUtil.getAccessToken().getToken() +"&media_id=MEDIA_ID"+mediaId;
+            String url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token="+WeiXinUtil.getAccessToken().getToken()+"&media_id="+mediaId;
             URL realurl=new URL(url);
             System.out.println("地址:"+url);
             //打开连接
@@ -53,29 +52,24 @@ public class DownloadVoice {
             // 获取所有响应头字段
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段，获取到cookies等
-            System.out.println("================================================================");
-            for (String key : map.keySet()) {
-                System.out.println(key + "的值是：" + map.get(key));
-            }
-            System.out.println("================================================================");
+            // -----------------------------------------------------------------------------
+            List<String> strings = map.get("Content-disposition");
+            String s = strings.get(0);
+            String info = s.substring(s.indexOf("\"")+1,s.lastIndexOf("\""));
+            // -----------------------------------------------------------------------------
             // 定义 BufferedReader输入流来读取URL的响应
-            read = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream(),"UTF-8"));
-            String line;//循环读取
-            while ((line = read.readLine()) != null) {
-                result += line;
+            InputStream stream = connection.getInputStream();
+            byte [] bytes = new byte[1024*1024*8];
+
+            int read = stream.read(bytes);
+            while (read != -1) {
+                System.out.println(bytes);
+                stream.read(bytes);
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }  finally{
-            if(read!=null){//关闭流
-                try {
-                    read.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+//        System.out.println(result);
         return result;
     }
 
@@ -91,15 +85,18 @@ public class DownloadVoice {
         JSONObject asrRes = client.asr(path, "amr", 8000, option);
         JSONArray result = asrRes.getJSONArray("result");
 
+
         return result.get(0).toString();
 
     }
 
     public static String asr(byte [] bytes){
             String lan = "语音占位";
+        HashMap<String,Object> option = new HashMap<>();
+        option.put("cuid","jsdahfjkasdhfkjafnjlad");
+        option.put("dev_pid",1837);
+        JSONObject asrRes2 = client.asr(bytes, "amr", 8000,null);
 
-        JSONObject asrRes2 = client.asr(bytes, "amr", 8000, null);
-        System.out.println(asrRes2);
             return lan;
 
     }

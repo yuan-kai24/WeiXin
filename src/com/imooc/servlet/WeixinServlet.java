@@ -50,8 +50,12 @@ public class WeixinServlet extends HttpServlet {
             String content = map.get("Content");//内容
             String msgType = map.get("MsgType");//类型
             // ----------------------------------------------------------------
-//            byte[] voice = DownloadVoice.getVoice(map);
-//            String asr = DownloadVoice.asr(voice);
+            byte[] voice = DownloadVoice.getVoice(map);
+            for (String s : map.keySet()) {
+                System.out.println(s + "::" + map.get(s));
+            }
+            String asr = DownloadVoice.asr(voice);
+            System.out.println("语音识别为"+asr);
             // ----------------------------------------------------------------
 
             String message = null;
