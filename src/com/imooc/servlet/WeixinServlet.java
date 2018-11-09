@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.imooc.po.DownloadVoice;
 import com.imooc.util.CheckUtil;
 import com.imooc.util.MessageUtil;
+import com.imooc.util.WeiXinUtil;
 
 @WebServlet("/wx")
 public class WeixinServlet extends HttpServlet {
@@ -87,9 +88,11 @@ public class WeixinServlet extends HttpServlet {
                 }
             }  else if(MessageUtil.MESSAGE_VOICE.equals(msgType)){
                 byte[] voice = DownloadVoice.SendGET(map.get("MediaId"));
-                String asr = DownloadVoice.asr(voice);
-                System.out.println(map.get("Recognition"));
-                message = MessageUtil.initText(toUserName, fromUserName, "语音消息：" + asr);
+                StringBuffer asr = new StringBuffer(DownloadVoice.asr(voice));
+//                System.out.println(map.get("Recognition")); // 微信自带
+                asr.deleteCharAt(asr.length()-1);
+                asr.append("。");
+                message = MessageUtil.initText(toUserName, fromUserName, "语音消息：" + asr+"\r\n"+WeiXinUtil.getAccessToken().getToken());
             }else{
                 message = MessageUtil.initText(toUserName, fromUserName, "发送类型：" + msgType);
 

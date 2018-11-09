@@ -19,8 +19,8 @@ public class WeiXinUtil {
     public static final String appsecret = "d8a28b197283b088efb34da4a91daa39";
 
     public static final String access_token = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-
-    public static long datecuo = 0L;
+    private static final AccessToken token = new AccessToken();
+    private static long datecuo = 0L;//微信过期access_token过期时间
 /*
 get
  */
@@ -62,16 +62,21 @@ post
     获取access_token
      */
     public static AccessToken getAccessToken(){
-        long l = System.currentTimeMillis();
+        Long dqsj = System.currentTimeMillis()/1000;
+        datecuo = (datecuo == 0) ? System.currentTimeMillis()/1000 : datecuo;//判断有没有保存
 
-        AccessToken token = new AccessToken();
-        String url = access_token.replace("APPID",appid).replace("APPSECRET",appsecret);
-        JSONObject jsonObject = doGetStr(url);
-        if(jsonObject != null){
-            token.setToken(jsonObject.getString("access_token"));
-            token.setExpiresIn(jsonObject.getString("expires_in"));
+        if((dqsj - datecuo) == 0 && (dqsj - datecuo) >= 7000){
+            datecuo = dqsj;
+            String url = access_token.replace("APPID",appid).replace("APPSECRET",appsecret);
+            JSONObject jsonObject = doGetStr(url);
+            if(jsonObject != null){
+                token.setToken(jsonObject.getString("access_token"));
+                token.setExpiresIn(jsonObject.getString("expires_in"));
+            }
         }
 
+
         return token;
+
     }
 }

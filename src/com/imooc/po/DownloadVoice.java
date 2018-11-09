@@ -17,11 +17,6 @@ public class DownloadVoice {
     public static final String SECRET_KEY = "9eaV3RvGkFC3PwActuqLefyCvv0F5jSf";
     public static AipSpeech client = new AipSpeech(APP_ID, API_KEY, SECRET_KEY);
 
-    // 调用接口
-    public static void main(String[] args) {
-        DownloadVoice.asr();
-    }
-
     public static byte[] SendGET(String mediaId) {
         byte[] addby = new byte[1024 * 8];
         try {
