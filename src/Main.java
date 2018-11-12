@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         TransApi api = new TransApi(APP_ID, SECURITY_KEY);
 
-        String query = "你好世界！";
+        String query = "你好世界";
         JSONObject jsonObject = JSONObject.fromObject(api.getTransResult(query, "auto", "en"));
         JSONArray trans_result = jsonObject.getJSONArray("trans_result");
         System.out.println(trans_result.getJSONObject(0).get("dst"));

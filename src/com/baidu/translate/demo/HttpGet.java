@@ -33,7 +33,7 @@ class HttpGet {
 
             String sendUrl = getUrlWithQueryString(host, params);
 
-            // System.out.println("URL:" + sendUrl);
+//             System.out.println("URL:" + sendUrl);
 
             URL uri = new URL(sendUrl); // 创建URL对象
             HttpURLConnection conn = (HttpURLConnection) uri.openConnection();

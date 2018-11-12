@@ -7,12 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68fbf061-0f5b-404c-a198-642e045f7844" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/baidu/translate/demo/MD5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/baidu/translate/demo/TransApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/WeiXinX_war_exploded/WEB-INF/classes/com/imooc/servlet/WeixinServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/WeiXinX_war_exploded/WEB-INF/classes/com/imooc/servlet/WeixinServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/resource/001.amr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/resource/10792 (1).wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/resource/123.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/resource/4.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/resource/5.wav" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,14 +54,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5578" />
-          <entry key="txt" value="18" />
+          <entry key="java" value="5609" />
+          <entry key="txt" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5578" />
-          <entry key="PLAIN_TEXT" value="18" />
+          <entry key="JAVA" value="5609" />
+          <entry key="PLAIN_TEXT" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -127,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/MD5.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
-              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+            <state relative-caret-position="319">
+              <caret line="105" column="60" lean-forward="true" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -136,8 +138,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+            <state relative-caret-position="219">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,8 +150,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+            <state relative-caret-position="-270">
+              <caret line="79" column="25" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,8 +162,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/TransApi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            <state relative-caret-position="644">
+              <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -203,6 +208,7 @@
         <option value="$PROJECT_DIR$/src/com/imooc/po/DownloadVoice.java" />
         <option value="$PROJECT_DIR$/src/com/imooc/util/WeiXinUtil.java" />
         <option value="$PROJECT_DIR$/src/com/baidu/translate/demo/MD5.java" />
+        <option value="$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
@@ -533,7 +539,7 @@
       <workItem from="1541758053193" duration="5970000" />
       <workItem from="1541767197863" duration="1651000" />
       <workItem from="1541827322849" duration="2703000" />
-      <workItem from="1542004999807" duration="1278000" />
+      <workItem from="1542004999807" duration="2945000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1541582968276</created>
@@ -633,11 +639,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541768388464</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="翻译">
+      <created>1542006346015</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1542006346015</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66558000" />
+    <option name="totallyTimeSpent" value="68225000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -690,7 +703,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="音频识别" />
     <MESSAGE value="access_token" />
-    <option name="LAST_COMMIT_MESSAGE" value="access_token" />
+    <MESSAGE value="翻译" />
+    <option name="LAST_COMMIT_MESSAGE" value="翻译" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/imooc/util/Init.java">
@@ -711,6 +725,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1950">
           <caret line="91" column="69" selection-start-line="91" selection-start-column="69" selection-end-line="91" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -772,27 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/MD5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="925">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/TransApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/imooc/util/AccessToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -804,10 +800,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/MD5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="105" column="60" lean-forward="true" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/TransApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/baidu/translate/demo/HttpGet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="79" column="25" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+        <state relative-caret-position="219">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
